@@ -2,7 +2,7 @@
 My second JS project after the word guessing game. This time, I build this all by my own and referencing my old project. This is a regular game to guess the bot's number before it guesses yours. Who founds it first wins.
 
 ## Hoested in GitHub Pages
-Click the link 
+Click the link https://amirqey.github.io/Guess-The-Number-Game/ 
 ![Screenshot](image.png)
 
 # How to play
