@@ -36,7 +36,8 @@ activeDeactiveFields(true, true);
 const win = document.getElementById("popup-win");
 
 const message = document.getElementById("message");
-const answer = document.getElementById("answer");
+const player_answer = document.getElementById("player-answer");
+const bot_answer = document.getElementById("bot-answer");
 
 const popup = document.getElementById("popup");
 const popup_message = document.getElementById("popup-message");
@@ -66,15 +67,13 @@ function displayGuessNumberRange(min_range, max_range) {
 }
 
 // open popup message
-function openPopup(token, display_message, player_win) {
+function openPopup(token, display_message) {
     if (token) {
         win.classList.add("open");
         message.textContent = display_message;
-        if (player_win) {
-            answer.textContent = lock_number;
-            return;
-        }
-        answer.textContent = bot_lock_number;
+        player_answer.textContent = `Your number is: ${lock_number}`;
+        bot_answer.textContent = `My number is: ${bot_lock_number}`;
+        return;
     }
     popup.classList.add("open");
     popup_message.textContent = display_message;
@@ -113,13 +112,13 @@ lock.addEventListener("click", () => {
 
         // error checking
         if (min_range > max_range) {
-            alert('The minimum number is bigger than maximum number');
+            openPopup(false, 'The minimum number is bigger than maximum number');
         }
         else if (lock_number > max_range || lock_number < min_range){
-            alert('The number you lock is outside the range you enter.');
+            openPopup(false, 'The number you lock is outside the range you enter.');
         }
         else if (min_range === max_range) {
-            alert('The range numbers shouldnt be same');
+            openPopup(false, 'The range numbers shouldnt be same');
         }
         
         // if all pass
@@ -148,7 +147,7 @@ lock.addEventListener("click", () => {
 
     }
     else {
-        alert('Please fill all the fields accordingly.');
+        openPopup(false, 'Please fill all the fields accordingly.');
     }
 
     // execute here when not pass the error checking
@@ -170,14 +169,15 @@ guess_button.addEventListener("click", () => {
 
     // if not in range
     if (guess_number_player < min_range || guess_number_player > max_range) {
-        openPopup(false, "Maybe look at the range again pal..", false);
-        guess_number_field.value = 0;
+        openPopup(false, "Maybe look at the range again pal..");
+        guess_number_field.value = "";
+        guess_number_field.focus();
         return;
     }
 
     // if found the bot's number
     if (guess_number_player === bot_lock_number) {
-        openPopup(true, "You found my number! Haha", true);
+        openPopup(true, "You found my number! Haha");
         return;
     }
 
@@ -210,14 +210,13 @@ guess_button.addEventListener("click", () => {
 
 higher.addEventListener("click", () => {
 
-    // 2 cases of player being snicky
-    // - bot already found the number
-    // - player click lower when it should be higher
-    if (bot_guess === lock_number ||bot_guess > lock_number) {
-        openPopup(false, "You sure you aren't lying pal? ", false);
-        if (bot_guess === lock_number) {
-            openPopup(true, "I found your number! Haha", false);
-        }
+    if (bot_guess === lock_number) {
+        openPopup(true, "You liar!!! Ha I found your number! Haha");
+        return;
+    }
+
+    if (bot_guess > lock_number) {
+        openPopup(false, "You sure you aren't lying pal? ");
         return;
     }
 
@@ -230,13 +229,16 @@ higher.addEventListener("click", () => {
 });
 
 lower.addEventListener("click", () => {
-    if (bot_guess === lock_number || bot_guess < lock_number) {
-        openPopup(false, "You sure you aren't lying pal? ", false);
-        if (bot_guess === lock_number) {
-            openPopup(true, "I found your number! Haha", false);
-        }
+    if (bot_guess === lock_number) {
+        openPopup(true, "You liar!!! Ha I found your number! Haha");
         return;
     }
+
+    if (bot_guess < lock_number) {
+        openPopup(false, "You sure you aren't lying pal? ");
+        return;
+    }
+
     max_number_bot = bot_guess - 1;
 
     activeDeactiveFields(true, false);
@@ -247,7 +249,8 @@ lower.addEventListener("click", () => {
 correct.addEventListener("click", () => {
 
     if (bot_guess != lock_number) {
-        openPopup(true, "I do not found your number yet but thanks.", false)
+        openPopup(true, "I do not found your number yet but thanks. I winn Haha");
+        return;
     }
-    openPopup(true, "I found your number! Haha", false);
+    openPopup(true, "I winn Haha");
 });
