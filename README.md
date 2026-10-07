@@ -23,6 +23,7 @@ Click the link https://amirqey.github.io/Guess-The-Number-Game/
 - Guess must be inside the current range. Otherwise, popups will appear.
 - The bot checks for obvious lies. Happens when player click higher when the guess is lower than their locked number.
 - The range is locked once set. The only way to change it, is to click the restart button.
+- Don't click the you found it button when the bot guess is wrong. Or else, the bot will win. This part is intentional.
 
 # Constraints
 - Zero isn't allowed as range or as a guess.
