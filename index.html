@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Guess the Word</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <!-- the first row to put restart button -->
+        <div class="container1">
+            <button type="reset" class="button-green" onclick="location.reload()">Restart</button>
+        </div>
+
+        <!-- second row for numbers form -->
+        <div class="container2">
+            <h3>Enter the range number</h3>
+            <form>
+                <input type="number" id="min-range" placeholder="Minimun range">
+                <input type="number" id="max-range" placeholder="Maximum range">
+                <input type="number" id="lock-number" placeholder="Lock your number">
+            </form>
+            <button type="button" class="button-green" id="lock">Lock</button>
+        </div> 
+
+        <!-- third row includes 2 columns box -->
+        <div style="display: flex; gap: 200px;">
+
+            <!-- first column box includes 3 rows -->
+            <div class="container3">
+
+                <!-- First row -->
+                <h3>Your guess should be</h3>
+
+                <!-- Second row includes 2 number boxes -->
+                <div style="display: flex; flex-direction: row;">
+                    <div class="box">
+                        <h3>Higher than</h3>
+                        <div class="box-number" id="min-guess">
+                        </div>
+                    </div>
+                    <div class="box">
+                        <h3>Lower than</h3>
+                        <div class="box-number" id="max-guess">
+                        </div>
+                    </div>
+                </div>  
+
+                <!-- Third row -->
+                <div style="display: flex; margin-top: 20px; margin-left: 20px;">
+                    <input type="number" placeholder="Put guess number here" id="guess-number">
+                    <button id="guess-btn" class="button-pink">Guess</button>
+                </div>
+            </div>
+
+            <!-- second column box includes 2 rows -->
+            <div class="container3" style="background: var(--soft); padding: 20px; border-radius: 30px; box-shadow: 18px 18px var(--black); border: 1px solid var(--black);">
+                
+                <!-- first row -->
+                <h3>Is this your number ?</h3>
+
+                <!-- second row includes 3 rows -->
+                <div class="box" style="margin-left: 0;">
+
+                    <!-- first row to display the number box -->
+                    <div class="box-number" id="bot-guess">    
+                    </div>
+
+                    <!-- 2 buttons for second row-->
+                    <div style="display: flex; margin-top: 10px;">
+                        <button class="button-pink" id="higher">Higher</button>
+                        <button class="button-pink" id="lower">Lower</button>
+                    </div>
+
+                    <!-- third row -->
+                    <button  class="button-pink" id="correct">You got it!</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden popups -->
+
+        <!-- Win popup -->
+        <div class="popup" id="popup-win">
+            <svg class="icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><g data-name="Layer 4" id="Layer_4"><path d="M47,33H17a1,1,0,0,0-1,1c0,9.93,7.18,18,16,18s16-8.07,16-18A1,1,0,0,0,47,33ZM18,35H46a18,18,0,0,1-.67,4H18.71A18,18,0,0,1,18,35Zm8.65,13.8a6.43,6.43,0,0,1,10.61,0,12.33,12.33,0,0,1-10.61,0Zm12.35-1A8.81,8.81,0,0,0,32,44a8.81,8.81,0,0,0-7,3.81A15.56,15.56,0,0,1,19.43,41H44.57A15.56,15.56,0,0,1,39,47.81ZM32,3A29,29,0,1,0,61,32,29,29,0,0,0,32,3Zm0,56A27,27,0,1,1,59,32,27,27,0,0,1,32,59Zm4-37a1.1,1.1,0,0,1,0-.18,1.17,1.17,0,0,1,.06-.2s0-.05,0-.07a.28.28,0,0,1,.07-.09.71.71,0,0,1,.28-.28s.06-.06.09-.07l10-5a1,1,0,1,1,.9,1.78L39.24,22l8.21,4.11a1,1,0,0,1,.44,1.34A1,1,0,0,1,47,28a.93.93,0,0,1-.45-.11l-10-5h0a1.18,1.18,0,0,1-.28-.22l0-.06a.65.65,0,0,1-.1-.15s0-.05,0-.07a1.17,1.17,0,0,1-.06-.2A1.1,1.1,0,0,1,36,22ZM16.55,26.11,24.76,22l-8.21-4.11a1,1,0,1,1,.9-1.78l10,5s.06.05.09.07a.71.71,0,0,1,.28.28.28.28,0,0,1,.07.09s0,.05,0,.07a1.17,1.17,0,0,1,.06.2.82.82,0,0,1,0,.36,1.17,1.17,0,0,1-.06.2s0,.05,0,.07a.65.65,0,0,1-.1.15.21.21,0,0,0,0,.06,1.18,1.18,0,0,1-.28.22h0l-10,5A.93.93,0,0,1,17,28a1,1,0,0,1-.89-.55A1,1,0,0,1,16.55,26.11Z"/></g></svg>
+            <h3 id="message"> </h3>
+            <h2 id="answer"> </h2>
+            <button class="button-green" onclick="location.reload()">Back</button>
+        </div>
+
+        <!-- Sneaky popup -->
+        <div class="popup" id="popup">
+            <svg class="icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 106.059 106.059"
+                xml:space="preserve"><g><path d="M90.544,90.542c20.687-20.685,20.684-54.342,0.002-75.024C69.858-5.172,36.198-5.172,15.515,15.513
+                    C-5.173,36.198-5.171,69.858,15.517,90.547C36.198,111.23,69.858,111.23,90.544,90.542z M21.302,21.3
+                    C38.795,3.807,67.261,3.805,84.759,21.302c17.494,17.494,17.492,45.962-0.002,63.455c-17.494,17.494-45.962,17.496-63.455,0.002
+                    C3.804,67.263,3.806,38.794,21.302,21.3z M23.769,39.805c0-1.738,1.409-3.147,3.147-3.147l13.373-0.001
+                    c0.027,0,0.054,0.007,0.081,0.008c1.61-0.018,3.226,0.581,4.453,1.81c2.423,2.423,2.423,6.35,0.003,8.771
+                    c-2.421,2.42-6.35,2.42-8.771-0.002c-1.186-1.187-1.781-2.735-1.806-4.292h-7.333C25.178,42.951,23.769,41.543,23.769,39.805z
+                    M62.621,39.898c0-1.738,1.409-3.146,3.146-3.146l13.373-0.001c0.028,0,0.055,0.007,0.081,0.008
+                    c1.61-0.019,3.227,0.581,4.453,1.809c2.423,2.423,2.423,6.351,0.003,8.771c-2.421,2.42-6.349,2.42-8.771-0.002
+                    c-1.188-1.188-1.782-2.736-1.807-4.292h-7.333C64.031,43.046,62.621,41.637,62.621,39.898z M33.445,65.561
+                    c9.859,0.311,32.958,1.909,34.469,10.011c0.253,1.357-0.643,2.663-2,2.916c-0.154,0.029-0.309,0.043-0.461,0.043
+                    c-1.181,0-2.23-0.84-2.455-2.042c-0.005-0.025-1.085-2.695-14.428-4.593c-7.637-1.086-15.207-1.334-15.283-1.337
+                    c-1.38-0.043-2.463-1.197-2.42-2.577c0.043-1.354,1.152-2.421,2.498-2.421C33.391,65.559,33.417,65.56,33.445,65.561z"/></g></svg>
+            <h3 id="popup-message"> </h3>
+            <button class="button-green" onclick="closePopup()">You caught me :[</button>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

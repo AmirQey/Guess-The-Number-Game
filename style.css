@@ -1,0 +1,173 @@
+
+
+/* root variable css */
+:root {
+    --green: #097d4c;
+    --soft: #fff1e1;
+    --pink: #fecddc;
+    --blue: #58a0ff;
+    --black: #000000;
+    --ease: cubic-bezier(0.3, 1, 0.36, 1);
+    --soft2: #f3e2cf;
+    --green2: #0c8e58;
+    --pink2: #f8c5d4;
+    --black2: #171616;
+    --orange: #ffb969;
+}
+
+body {
+    background: url(bg.png);
+    background-size: cover;
+}
+
+.container1, .container2, .container3 {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+h3 {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 2.2vw;
+}
+
+h2 {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color: var(--soft);
+    font-size: 4.4vw;
+}
+
+
+form {
+    display: flex;
+}
+
+input[type="number"] {
+    background-color: var(--soft);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-left: 10px;
+    border-radius: 15px;
+    border: 1px solid var(--black);
+    padding: 10px;
+}
+
+.button-pink {
+    cursor: pointer;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: 10px;
+    padding: 10px 30px;
+    border: 1px solid var(--black);
+    border-radius: 15px;
+    background-color: var(--pink);
+    box-shadow: -5px -5px var(--black);
+}
+
+.button-pink:hover {
+    transform: translateY(3px);
+    box-shadow: -8px -8px var(--black2);
+    background-color: var(--pink2);
+    color: var(--black);
+}
+
+.button-pink:active {
+    transform: translateY(-5px);
+    background-color: var(--pink2);
+    box-shadow: -4px -4px var(--black2);
+}
+
+
+.button-green {
+    cursor: pointer;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: 10px;
+    padding: 10px 30px;
+    border: 1px solid var(--black);
+    border-radius: 15px;
+    background-color: var(--soft);
+    box-shadow: -5px -5px var(--green);
+    transition: transform 0.15s var(--ease), box-shadow 0.2s var(--ease), background-color 0.2s var(--ease), color 0.2 var(--ease) ;
+}
+
+.button-green:hover {
+    transform: translateY(3px);
+    box-shadow: -8px -8px var(--green2);
+    background-color: var(--soft2);
+    color: var(--black);
+}
+
+.button-green:active {
+    transform: translateY(-5px);
+    background-color: var(--soft2);
+    box-shadow: -4px -4px var(--green2);
+}
+
+.button-pink:disabled, .button-green:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.container1 {
+    display: flex;
+    justify-content: end;
+}
+
+.container3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.box {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-number {
+    margin-left: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: var(--green);
+    width: auto;
+    padding: 0 30px 10px 30px;
+    border: 1px solid var(--black);
+    border-radius: 13px;
+    color: var(--soft);
+    font-size: 7vw;
+    text-align: center;
+}
+
+.popup {
+    margin: auto;
+    text-align: center;
+    background-color: var(--orange);
+    box-shadow: 0 6px var(--black);
+    border: 1px solid var(--black);
+    border-radius: 15px;
+    padding: 10px;
+    width: auto;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(0.1);
+    visibility: hidden;
+}
+
+.open {
+    visibility: visible;
+    top: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.icon {
+    width: 7vw;
+    outline: var(--soft);
+}
