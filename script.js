@@ -115,10 +115,10 @@ lock.addEventListener("click", () => {
         if (min_range > max_range) {
             alert('The minimum number is bigger than maximum number');
         }
-        if (lock_number > max_range || lock_number < min_range){
+        else if (lock_number > max_range || lock_number < min_range){
             alert('The number you lock is outside the range you enter.');
         }
-        if (min_range === max_range) {
+        else if (min_range === max_range) {
             alert('The range numbers shouldnt be same');
         }
         
