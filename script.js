@@ -109,7 +109,7 @@ lock.addEventListener("click", () => {
     lock_number = Number(lock_number_field.value);
 
     //when all fields have numbers
-    if (min_range && max_range && lock_number) {
+    if (min_range >=0 && max_range >= 0 && lock_number >= 0) {
 
         // error checking
         if (min_range > max_range) {
@@ -118,7 +118,10 @@ lock.addEventListener("click", () => {
         if (lock_number > max_range || lock_number < min_range){
             alert('The number you lock is outside the range you enter.');
         }
-
+        if (min_range === max_range) {
+            alert('The range numbers shouldnt be same');
+        }
+        
         // if all pass
         else {
 

@@ -62,6 +62,7 @@ input[type="number"] {
     border-radius: 15px;
     background-color: var(--pink);
     box-shadow: -5px -5px var(--black);
+    transition: transform 0.15s var(--ease), box-shadow 0.2s var(--ease), background-color 0.2s var(--ease), color 0.2s var(--ease) ;
 }
 
 .button-pink:hover {
@@ -90,7 +91,7 @@ input[type="number"] {
     border-radius: 15px;
     background-color: var(--soft);
     box-shadow: -5px -5px var(--green);
-    transition: transform 0.15s var(--ease), box-shadow 0.2s var(--ease), background-color 0.2s var(--ease), color 0.2 var(--ease) ;
+    transition: transform 0.15s var(--ease), box-shadow 0.2s var(--ease), background-color 0.2s var(--ease), color 0.2s var(--ease) ;
 }
 
 .button-green:hover {
