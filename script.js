@@ -109,7 +109,7 @@ lock.addEventListener("click", () => {
     lock_number = Number(lock_number_field.value);
 
     //when all fields have numbers
-    if (min_range >=0 && max_range >= 0 && lock_number >= 0) {
+    if (min_range >-1 && max_range >-1 && lock_number >-1) {
 
         // error checking
         if (min_range > max_range) {
